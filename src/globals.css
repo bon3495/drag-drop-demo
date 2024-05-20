@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+*::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track {
+  background-color: hsl(0deg 4% 95%);
+}
+
+html.dark *::-webkit-scrollbar-track,
+html.dark textarea::-webkit-scrollbar-track {
+  background-color: hsl(215 22% 15%);
+}
+
+*::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+  background-color: #b0b9c0;
+  border-radius: 100vw;
+  height: 50px;
+  border: 3px solid hsl(0deg 4% 95%);
+}

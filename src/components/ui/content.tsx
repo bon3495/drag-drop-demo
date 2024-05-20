@@ -243,45 +243,49 @@ const Content = () => {
                 </button>
               }
             >
-              <Droppable droppableId={day} type={TYPE_WORKOUT}>
-                {(provided) => (
-                  <div
-                    className="flex flex-col space-y-2 flex-1"
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                  >
-                    {tasks.map((task, index) => {
-                      return (
-                        <Draggable
-                          key={task.id}
-                          draggableId={task.id}
-                          index={index}
-                        >
-                          {(provided, snapshot) => (
-                            <TaskItem
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              title={task.title}
-                              isDragging={snapshot.isDragging}
-                              task={task}
-                              buttonAdd={
-                                <button
-                                  className="flex"
-                                  onClick={() => handleAddNewExercise(task.id)}
-                                >
-                                  <PlusIcon />
-                                </button>
-                              }
-                            ></TaskItem>
-                          )}
-                        </Draggable>
-                      );
-                    })}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
+              <div className="overflow-auto px-2 pb-2 flex-1 flex flex-col">
+                <Droppable droppableId={day} type={TYPE_WORKOUT}>
+                  {(provided) => (
+                    <div
+                      className="flex flex-col space-y-2 flex-1"
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                    >
+                      {tasks.map((task, index) => {
+                        return (
+                          <Draggable
+                            key={task.id}
+                            draggableId={task.id}
+                            index={index}
+                          >
+                            {(provided, snapshot) => (
+                              <TaskItem
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                title={task.title}
+                                isDragging={snapshot.isDragging}
+                                task={task}
+                                buttonAdd={
+                                  <button
+                                    className="flex"
+                                    onClick={() =>
+                                      handleAddNewExercise(task.id)
+                                    }
+                                  >
+                                    <PlusIcon />
+                                  </button>
+                                }
+                              ></TaskItem>
+                            )}
+                          </Draggable>
+                        );
+                      })}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </div>
             </DayBlock>
           );
         })}
