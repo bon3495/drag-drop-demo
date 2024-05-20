@@ -16,3 +16,8 @@ export interface TaskItemProps {
   title: string;
   exercises: ExerciseItemProps[];
 }
+
+export interface ColumnItemProps {
+  id: string;
+  taskIds: string[];
+}

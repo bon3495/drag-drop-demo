@@ -19,6 +19,7 @@ import { TaskItem } from './task-item';
 import { EXERCISES_ARRAY, TYPE_EXERCISE, TYPE_WORKOUT } from '../../constant';
 import { getRandomItem } from '../../utils';
 import { PlusIcon } from '../icons/plus';
+import { ColumnItemProps } from '../../types/globals.type';
 
 const Content = () => {
   const today = startOfToday();
@@ -30,6 +31,15 @@ const Content = () => {
 
   const [data, setData] = useState({
     ...initialData,
+    columns: days.reduce((result, cur) => {
+      return {
+        ...result,
+        [cur.toISOString()]: {
+          taskIds: [],
+          id: cur.toISOString(),
+        },
+      };
+    }, {} as { [key: string]: ColumnItemProps }),
     columnOrder: days.map((day) => day.toISOString()),
   });
 
