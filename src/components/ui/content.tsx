@@ -224,7 +224,7 @@ const Content = () => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="py-20 flex-1 grid grid-cols-7 gap-x-2.5">
+      <div className="py-20 flex-1 grid grid-cols-7 gap-x-2.5 overflow-hidden">
         {data.columnOrder.map((day) => {
           const column = data.columns[day as keyof typeof data.columns];
 
@@ -234,6 +234,7 @@ const Content = () => {
 
           return (
             <DayBlock
+              className="overflow-hidden"
               key={day}
               day={new Date(day)}
               buttonAdd={
